@@ -7,11 +7,13 @@ Intents are mapped to the 12 coarse clusters via laya-triage's
 INTENT_TO_CLUSTER (a mechanical, committed mapping), so the cluster label
 stays human-derived.
 
-Stratified by cluster, seeded (random.Random(20261110)), 200 tickets total.
+Stratified by cluster, seeded (random.Random(20261110)), 200 tickets by
+default; --n all emits the full 3,080-case test split.
 Question: the same 12-way cluster choice as the laya suites.
 
-Usage: python3 scripts/import_banking77.py
+Usage: python3 scripts/import_banking77.py [--n 200|all]
 """
+import argparse
 import csv
 import importlib.util
 import json
@@ -40,6 +42,10 @@ CLUSTER_Q = {
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--n", default="200", help="tickets per run: an int, or 'all' for the full test split")
+    args = ap.parse_args()
+
     src = LAYA / "data" / "external" / "test.csv"
     if not src.exists():
         raise SystemExit(f"{src} missing — it is gitignored in laya-triage; re-download BANKING77 test.csv from the PolyAI repo")
@@ -54,33 +60,41 @@ def main():
     for r in rows:
         by_cluster[INTENT_TO_CLUSTER[r["category"]]].append(r["text"])
 
-    rng = random.Random(SEED)
-    per_cluster = SAMPLE_N // len(by_cluster)
-    remainder = SAMPLE_N - per_cluster * len(by_cluster)
-    picked = []
-    for i, (cluster, texts) in enumerate(sorted(by_cluster.items())):
-        take = per_cluster + (1 if i < remainder else 0)
-        picked += [(cluster, t) for t in rng.sample(sorted(texts), take)]
+    if args.n == "all":
+        picked = [(cluster, t) for cluster, texts in sorted(by_cluster.items()) for t in texts]
+        name = "banking77_cluster_full"
+    else:
+        sample_n = int(args.n)
+        rng = random.Random(SEED)
+        per_cluster = sample_n // len(by_cluster)
+        remainder = sample_n - per_cluster * len(by_cluster)
+        picked = []
+        for i, (cluster, texts) in enumerate(sorted(by_cluster.items())):
+            take = per_cluster + (1 if i < remainder else 0)
+            picked += [(cluster, t) for t in rng.sample(sorted(texts), take)]
+        name = f"banking77_cluster_{sample_n}"
 
     cases = [{
         "state": {"ticket": text},
         "questions": [CLUSTER_Q],
         "expected": {"cluster": cluster},
     } for cluster, text in picked]
-    rng.shuffle(cases)
+    if args.n != "all":
+        random.Random(SEED + 1).shuffle(cases)  # seeded, reproducible run order
 
     suite = {
-        "name": "banking77_cluster_200",
+        "name": name,
         "description": (
-            f"200 tickets stratified by cluster (seed {SEED}) from laya-triage's "
-            f"data/external/test.csv — the canonical PolyAI BANKING77 test split, "
-            "human-annotated intent labels mapped to the 12 clusters via laya_triage "
-            f"schema.py @ {sha}. Strongest labels in this repo: human-derived."
+            f"{len(cases)} tickets "
+            + (f"stratified by cluster (seed {SEED}) " if args.n != "all" else "(full split) ")
+            + "from laya-triage's data/external/test.csv — the canonical PolyAI "
+            "BANKING77 test split, human-annotated intent labels mapped to the 12 "
+            f"clusters via laya_triage schema.py @ {sha}. Human-derived labels."
         ),
         "questions_schema": [CLUSTER_Q],
         "cases": cases,
     }
-    out = EVALS / "suites" / "banking77_cluster_200.json"
+    out = EVALS / "suites" / f"{name}.json"
     out.write_text(json.dumps(suite, indent=2, ensure_ascii=False), encoding="utf-8")
     dist = Counter(c["expected"]["cluster"] for c in cases)
     print(f"{len(cases)} cases across {len(dist)} clusters -> {out}")

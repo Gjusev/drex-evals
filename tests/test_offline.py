@@ -79,6 +79,18 @@ def test_unlabeled_questions_are_not_scored():
     assert run_suite(MockDrexClient(RULES), one) == {}
 
 
+def test_by_group_breakdown_is_additive():
+    grouped = [dict(c, group="a" if i == 0 else "b") for i, c in enumerate(CASES)]
+    plain = run_suite(MockDrexClient(RULES), CASES)
+    grouped_report = run_suite(MockDrexClient(RULES), grouped)
+    for q in plain:
+        overall = {k: v for k, v in grouped_report[q].items() if k != "by_group"}
+        assert overall == plain[q]  # grouping does not change the overall row
+        assert set(grouped_report[q]["by_group"]) == {"a", "b"}
+        assert grouped_report[q]["by_group"]["a"]["n"] == 1
+    assert "by_group" not in plain["team"]  # no groups -> no key (schema additive)
+
+
 def test_mock_wrong_when_rules_miss():
     bad_rules = {"team": {"spam": "other"}}  # no keyword matches either ticket
     report = run_suite(MockDrexClient(bad_rules), CASES)

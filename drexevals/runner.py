@@ -24,47 +24,57 @@ def run_suite(client, cases: list[dict]) -> dict:
       0 is perfectly calibrated.
 
     Questions without an expected label are skipped, not counted as wrong.
+    Cases may carry a "group" (e.g. language); when any do, each question's
+    row also gets "by_group": {group: same stats} — additive, overall row
+    unchanged.
     """
     per_q: dict[str, dict] = {}
+    per_group: dict[tuple[str, str], dict] = {}  # (question, group) -> stats
+
+    def bump(store, key):
+        return store.setdefault(key, {
+            "n": 0, "correct": 0, "conf_sum": 0.0,
+            "conf_correct": 0.0, "conf_wrong": 0.0, "brier_sum": 0.0,
+            "bins": [[] for _ in range(5)],
+            "ece_bins": [[] for _ in range(N_ECE_BINS)],
+        })
+
     for case in cases:
         request = DecisionRequest(
             state=case["state"],
             questions=case["questions"],
         )
         answer: Answer = client.decide(request)
+        group = case.get("group")
         for qname, (chosen, probs) in answer.per_question.items():
             expected = case["expected"].get(qname)
             if expected is None:
                 continue
-            stats = per_q.setdefault(qname, {
-                "n": 0, "correct": 0, "conf_sum": 0.0,
-                "conf_correct": 0.0, "conf_wrong": 0.0, "brier_sum": 0.0,
-                "bins": [[] for _ in range(5)],
-                "ece_bins": [[] for _ in range(N_ECE_BINS)],
-            })
+            stats = bump(per_q, qname)
+            targets = [stats] if group is None else [stats, bump(per_group, (qname, group))]
             conf = max(probs.values()) if probs else 0.0
             correct = chosen == expected
-            stats["n"] += 1
-            stats["conf_sum"] += conf
             brier = sum(
                 (p - (1.0 if opt == expected else 0.0)) ** 2
                 for opt, p in probs.items()
             )
             if expected not in probs:
                 brier += 1.0  # expected class absent: (0 - 1)^2 over the label union
-            stats["brier_sum"] += brier
-            if correct:
-                stats["correct"] += 1
-                stats["conf_correct"] += conf
-            else:
-                stats["conf_wrong"] += conf
             bin_idx = min(max(int(conf * 5), 0), 4)  # clamp: bad endpoints may emit p < 0
-            stats["bins"][bin_idx].append(1.0 if correct else 0.0)
             ece_idx = min(max(int(conf * N_ECE_BINS), 0), N_ECE_BINS - 1)
-            stats["ece_bins"][ece_idx].append((conf, 1.0 if correct else 0.0))
+            for s in targets:
+                s["n"] += 1
+                s["conf_sum"] += conf
+                s["brier_sum"] += brier
+                if correct:
+                    s["correct"] += 1
+                    s["conf_correct"] += conf
+                else:
+                    s["conf_wrong"] += conf
+                s["bins"][bin_idx].append(1.0 if correct else 0.0)
+                s["ece_bins"][ece_idx].append((conf, 1.0 if correct else 0.0))
 
-    report = {}
-    for qname, s in per_q.items():
+    def to_row(s: dict) -> dict:
         bins = []
         for i, b in enumerate(s["bins"]):
             if b:
@@ -87,7 +97,7 @@ def run_suite(client, cases: list[dict]) -> dict:
                 "avg_confidence": conf_b,
                 "observed_accuracy": acc_b,
             })
-        report[qname] = {
+        return {
             "n": s["n"],
             "accuracy": s["correct"] / s["n"],
             "avg_confidence": s["conf_sum"] / s["n"],
@@ -98,4 +108,11 @@ def run_suite(client, cases: list[dict]) -> dict:
             "ece": ece,
             "ece_bins": ece_bins,
         }
+
+    report = {}
+    for qname, s in per_q.items():
+        report[qname] = to_row(s)
+        groups = {g: to_row(gs) for (q, g), gs in per_group.items() if q == qname}
+        if groups:
+            report[qname]["by_group"] = groups
     return report

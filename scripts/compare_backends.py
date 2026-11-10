@@ -28,6 +28,7 @@ def load_cases(path):
         "state": c["state"],
         "questions": [Question(**q) for q in c["questions"]],
         "expected": c["expected"],
+        **({"group": c["group"]} if "group" in c else {}),
     } for c in raw["cases"]]
 
 

@@ -96,7 +96,8 @@
         "cluster": "card_ordering_and_delivery",
         "urgency": "high",
         "frustration": "concerned"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -149,7 +150,8 @@
         "cluster": "card_ordering_and_delivery",
         "urgency": "none",
         "frustration": "calm"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -202,7 +204,8 @@
         "cluster": "card_and_pin_malfunctions",
         "urgency": "high",
         "frustration": "calm"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -255,7 +258,8 @@
         "cluster": "card_and_pin_malfunctions",
         "urgency": "some",
         "frustration": "calm"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -308,7 +312,8 @@
         "cluster": "card_and_pin_malfunctions",
         "urgency": "high",
         "frustration": "annoyed"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -361,7 +366,8 @@
         "cluster": "card_payment_problems",
         "urgency": "drop-everything",
         "frustration": "annoyed"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -414,7 +420,8 @@
         "cluster": "card_payment_problems",
         "urgency": "some",
         "frustration": "concerned"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -467,7 +474,8 @@
         "cluster": "card_payment_problems",
         "urgency": "some",
         "frustration": "concerned"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -520,7 +528,8 @@
         "cluster": "card_payment_problems",
         "urgency": "some",
         "frustration": "concerned"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -573,7 +582,8 @@
         "cluster": "cash_and_atm",
         "urgency": "high",
         "frustration": "calm"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -626,7 +636,8 @@
         "cluster": "cash_and_atm",
         "urgency": "some",
         "frustration": "calm"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -679,7 +690,8 @@
         "cluster": "transfers_and_beneficiaries",
         "urgency": "drop-everything",
         "frustration": "concerned"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -732,7 +744,8 @@
         "cluster": "transfers_and_beneficiaries",
         "urgency": "high",
         "frustration": "calm"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -785,7 +798,8 @@
         "cluster": "transfers_and_beneficiaries",
         "urgency": "none",
         "frustration": "calm"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -838,7 +852,8 @@
         "cluster": "transfers_and_beneficiaries",
         "urgency": "some",
         "frustration": "annoyed"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -891,7 +906,8 @@
         "cluster": "top_ups_and_balance_updates",
         "urgency": "high",
         "frustration": "annoyed"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -944,7 +960,8 @@
         "cluster": "top_ups_and_balance_updates",
         "urgency": "high",
         "frustration": "concerned"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -997,7 +1014,8 @@
         "cluster": "top_ups_and_balance_updates",
         "urgency": "none",
         "frustration": "calm"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -1050,7 +1068,8 @@
         "cluster": "fees_charges_and_refunds",
         "urgency": "none",
         "frustration": "calm"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -1103,7 +1122,8 @@
         "cluster": "fees_charges_and_refunds",
         "urgency": "none",
         "frustration": "concerned"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -1156,7 +1176,8 @@
         "cluster": "fees_charges_and_refunds",
         "urgency": "high",
         "frustration": "concerned"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -1209,7 +1230,8 @@
         "cluster": "exchange_rates",
         "urgency": "none",
         "frustration": "annoyed"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -1262,7 +1284,8 @@
         "cluster": "identity_and_account_admin",
         "urgency": "high",
         "frustration": "annoyed"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -1315,7 +1338,8 @@
         "cluster": "identity_and_account_admin",
         "urgency": "high",
         "frustration": "angry"
-      }
+      },
+      "group": "de"
     },
     {
       "state": {
@@ -1368,7 +1392,8 @@
         "cluster": "lost_stolen_compromised",
         "urgency": "drop-everything",
         "frustration": "angry"
-      }
+      },
+      "group": "de"
     }
   ]
 }

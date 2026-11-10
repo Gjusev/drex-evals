@@ -44,6 +44,7 @@ def main():
             "state": c["state"],
             "questions": [Question(**q) for q in c["questions"]],
             "expected": c["expected"],
+            **({"group": c["group"]} if "group" in c else {}),
         })
 
     client = MockDrexClient(rules={}) if args.mock else DrexClient()

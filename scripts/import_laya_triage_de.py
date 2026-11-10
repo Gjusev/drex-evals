@@ -43,6 +43,7 @@ def main():
             "urgency": URGENCY_LEVELS[r["urgency"]],
             "frustration": FRUSTRATION_LEVELS[r["frustration"]],
         },
+        "group": "de",
     } for r in rows]
 
     suite = {
