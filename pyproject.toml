@@ -1,0 +1,7 @@
+[project]
+name = "drexevals"
+version = "0.1.0"
+description = "Evaluation bridge for Drex decision models (arXiv:2611.07854): accuracy + calibration on typed decision suites."
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
