@@ -37,7 +37,7 @@ def main():
     args = ap.parse_args()
 
     suite_path = Path(args.suite)
-    raw = json.loads(suite_path.read_text())
+    raw = json.loads(suite_path.read_text(encoding="utf-8"))
     cases = []
     for c in raw["cases"]:
         cases.append({

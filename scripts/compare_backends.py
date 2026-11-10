@@ -23,7 +23,7 @@ from drexevals import DrexClient, MockDrexClient, Question, run_suite  # noqa: E
 
 
 def load_cases(path):
-    raw = json.loads(Path(path).read_text())
+    raw = json.loads(Path(path).read_text(encoding="utf-8"))
     return [{
         "state": c["state"],
         "questions": [Question(**q) for q in c["questions"]],
