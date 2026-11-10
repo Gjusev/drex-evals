@@ -1,0 +1,101 @@
+{
+  "name": "triage_demo",
+  "description": "Support-ticket triage: team routing, refund intent, urgency. 10 cases.",
+  "questions_schema": [
+    {"name": "team", "type": "choice", "instructions": "Which team should handle this ticket?", "criteria": {"billing": "Payments, charges, and refunds", "technical": "Bugs and outages", "other": "Anything else"}},
+    {"name": "refund", "type": "noul", "instructions": "Does the customer explicitly ask for a refund?"},
+    {"name": "urgency", "type": "score", "instructions": "How urgent is this ticket?", "criteria": ["Routine", "Soon", "Urgent"]}
+  ],
+  "cases": [
+    {
+      "state": {"ticket": "I was charged twice for the same order. Please refund the extra payment."},
+      "questions": [
+        {"name": "team", "type": "choice", "instructions": "Which team should handle this ticket?", "criteria": {"billing": "Payments, charges, and refunds", "technical": "Bugs and outages", "other": "Anything else"}},
+        {"name": "refund", "type": "noul", "instructions": "Does the customer explicitly ask for a refund?"},
+        {"name": "urgency", "type": "score", "instructions": "How urgent is this ticket?", "criteria": ["Routine", "Soon", "Urgent"]}
+      ],
+      "expected": {"team": "billing", "refund": "noui", "urgency": "Soon"}
+    },
+    {
+      "state": {"ticket": "The app crashes on startup since your last update. This is blocking my whole team."},
+      "questions": [
+        {"name": "team", "type": "choice", "instructions": "Which team should handle this ticket?", "criteria": {"billing": "Payments, charges, and refunds", "technical": "Bugs and outages", "other": "Anything else"}},
+        {"name": "refund", "type": "noul", "instructions": "Does the customer explicitly ask for a refund?"},
+        {"name": "urgency", "type": "score", "instructions": "How urgent is this ticket?", "criteria": ["Routine", "Soon", "Urgent"]}
+      ],
+      "expected": {"team": "technical", "refund": "noui", "urgency": "Urgent"}
+    },
+    {
+      "state": {"ticket": "Just wanted to say the new dashboard looks great, thanks!"},
+      "questions": [
+        {"name": "team", "type": "choice", "instructions": "Which team should handle this ticket?", "criteria": {"billing": "Payments, charges, and refunds", "technical": "Bugs and outages", "other": "Anything else"}},
+        {"name": "refund", "type": "noul", "instructions": "Does the customer explicitly ask for a refund?"},
+        {"name": "urgency", "type": "score", "instructions": "How urgent is this ticket?", "criteria": ["Routine", "Soon", "Urgent"]}
+      ],
+      "expected": {"team": "other", "refund": "noun", "urgency": "Routine"}
+    },
+    {
+      "state": {"ticket": "Your service has been down for three hours. We pay a lot for this — refund our month or we cancel."},
+      "questions": [
+        {"name": "team", "type": "choice", "instructions": "Which team should handle this ticket?", "criteria": {"billing": "Payments, charges, and refunds", "technical": "Bugs and outages", "other": "Anything else"}},
+        {"name": "refund", "type": "noul", "instructions": "Does the customer explicitly ask for a refund?"},
+        {"name": "urgency", "type": "score", "instructions": "How urgent is this ticket?", "criteria": ["Routine", "Soon", "Urgent"]}
+      ],
+      "expected": {"team": "billing", "refund": "noui", "urgency": "Urgent"}
+    },
+    {
+      "state": {"ticket": "How do I change my invoice address for next month's billing?"},
+      "questions": [
+        {"name": "team", "type": "choice", "instructions": "Which team should handle this ticket?", "criteria": {"billing": "Payments, charges, and refunds", "technical": "Bugs and outages", "other": "Anything else"}},
+        {"name": "refund", "type": "noul", "instructions": "Does the customer explicitly ask for a refund?"},
+        {"name": "urgency", "type": "score", "instructions": "How urgent is this ticket?", "criteria": ["Routine", "Soon", "Urgent"]}
+      ],
+      "expected": {"team": "billing", "refund": "noun", "urgency": "Routine"}
+    },
+    {
+      "state": {"ticket": "Login with Google button spins forever and never logs me in."},
+      "questions": [
+        {"name": "team", "type": "choice", "instructions": "Which team should handle this ticket?", "criteria": {"billing": "Payments, charges, and refunds", "technical": "Bugs and outages", "other": "Anything else"}},
+        {"name": "refund", "type": "noul", "instructions": "Does the customer explicitly ask for a refund?"},
+        {"name": "urgency", "type": "score", "instructions": "How urgent is this ticket?", "criteria": ["Routine", "Soon", "Urgent"]}
+      ],
+      "expected": {"team": "technical", "refund": "noun", "urgency": "Soon"}
+    },
+    {
+      "state": {"ticket": "I subscribed to the wrong plan by accident. Can you cancel it and give my money back?"},
+      "questions": [
+        {"name": "team", "type": "choice", "instructions": "Which team should handle this ticket?", "criteria": {"billing": "Payments, charges, and refunds", "technical": "Bugs and outages", "other": "Anything else"}},
+        {"name": "refund", "type": "noul", "instructions": "Does the customer explicitly ask for a refund?"},
+        {"name": "urgency", "type": "score", "instructions": "How urgent is this ticket?", "criteria": ["Routine", "Soon", "Urgent"]}
+      ],
+      "expected": {"team": "billing", "refund": "noui", "urgency": "Soon"}
+    },
+    {
+      "state": {"ticket": "Do you offer an education discount for students?"},
+      "questions": [
+        {"name": "team", "type": "choice", "instructions": "Which team should handle this ticket?", "criteria": {"billing": "Payments, charges, and refunds", "technical": "Bugs and outages", "other": "Anything else"}},
+        {"name": "refund", "type": "noul", "instructions": "Does the customer explicitly ask for a refund?"},
+        {"name": "urgency", "type": "score", "instructions": "How urgent is this ticket?", "criteria": ["Routine", "Soon", "Urgent"]}
+      ],
+      "expected": {"team": "billing", "refund": "noun", "urgency": "Routine"}
+    },
+    {
+      "state": {"ticket": "API returns 502 on every request since this morning. Production is affected."},
+      "questions": [
+        {"name": "team", "type": "choice", "instructions": "Which team should handle this ticket?", "criteria": {"billing": "Payments, charges, and refunds", "technical": "Bugs and outages", "other": "Anything else"}},
+        {"name": "refund", "type": "noul", "instructions": "Does the customer explicitly ask for a refund?"},
+        {"name": "urgency", "type": "score", "instructions": "How urgent is this ticket?", "criteria": ["Routine", "Soon", "Urgent"]}
+      ],
+      "expected": {"team": "technical", "refund": "noun", "urgency": "Urgent"}
+    },
+    {
+      "state": {"ticket": "Delete my account and all my data, and refund the subscription I did not use."},
+      "questions": [
+        {"name": "team", "type": "choice", "instructions": "Which team should handle this ticket?", "criteria": {"billing": "Payments, charges, and refunds", "technical": "Bugs and outages", "other": "Anything else"}},
+        {"name": "refund", "type": "noul", "instructions": "Does the customer explicitly ask for a refund?"},
+        {"name": "urgency", "type": "score", "instructions": "How urgent is this ticket?", "criteria": ["Routine", "Soon", "Urgent"]}
+      ],
+      "expected": {"team": "billing", "refund": "noui", "urgency": "Soon"}
+    }
+  ]
+}
