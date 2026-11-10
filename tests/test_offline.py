@@ -88,18 +88,13 @@ def test_mock_wrong_when_rules_miss():
     assert report["refund"]["brier"] == pytest.approx(1.0)
 
 
-def test_client_rejects_invalid_probability(monkeypatch):
+def _fake_response(monkeypatch, payload):
     import json as _json
     import urllib.request
 
-    from drexevals import DecisionRequest, DrexClient
-
     class FakeResp:
         def read(self):
-            return _json.dumps({"answers": {"q": {"options": [
-                {"label": "ok", "probability": 0.5},
-                {"label": "bad", "probability": "NaN"},
-            ]}}}).encode()
+            return _json.dumps(payload).encode()
 
         def __enter__(self):
             return self
@@ -108,5 +103,41 @@ def test_client_rejects_invalid_probability(monkeypatch):
             return False
 
     monkeypatch.setattr(urllib.request, "urlopen", lambda req, timeout=120: FakeResp())
-    with pytest.raises(ValueError, match="bad"):
+
+
+def test_client_parses_real_response_contract(monkeypatch):
+    # response shape from drex-decision-models docs/request-format.md
+    from drexevals import DecisionRequest, DrexClient
+
+    _fake_response(monkeypatch, {
+        "answers": {
+            "team": {
+                "type": "choice", "choice": "billing", "confidence": 0.9889,
+                "probabilities": {"billing": 0.9926, "technical": 0.0024, "other": 0.005},
+            },
+            "refund": {"type": "noul", "noul": 0.9931},
+            "urgency": {
+                "type": "score", "score": 1.3362, "legend": ["Routine", "Soon", "Urgent"],
+                "probabilities": {"0": 0.2489, "1": 0.166, "2": 0.5851},
+            },
+        },
+        "usage": {"input_tokens": 87, "output_tokens": 166},
+    })
+    answer = DrexClient(base_url="http://x").decide(DecisionRequest(state={}, questions=[]))
+    chosen, probs = answer.per_question["team"]
+    assert chosen == "billing"
+    assert probs["billing"] == pytest.approx(0.9926)
+    chosen, probs = answer.per_question["refund"]
+    assert chosen == "noui"
+    assert probs == {"noui": pytest.approx(0.9931), "noun": pytest.approx(0.0069)}
+    chosen, probs = answer.per_question["urgency"]
+    assert chosen == "Urgent"
+    assert probs["Soon"] == pytest.approx(0.166)
+
+
+def test_client_rejects_invalid_probability(monkeypatch):
+    from drexevals import DecisionRequest, DrexClient
+
+    _fake_response(monkeypatch, {"answers": {"refund": {"type": "noul", "noul": "NaN"}}})
+    with pytest.raises(ValueError, match="refund"):
         DrexClient(base_url="http://x").decide(DecisionRequest(state={}, questions=[]))

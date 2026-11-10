@@ -43,16 +43,30 @@ class DrexClient(BaseClient):
 
         out = Answer()
         for name, result in payload.get("answers", {}).items():
-            options: dict[str, float] = {
-                o["label"]: float(o["probability"])
-                for o in result.get("options", [])
-            }
+            qtype = result.get("type")
+            if qtype == "noul":
+                # server sends only the probability of "yes"; this repo labels
+                # the noul outcomes "noui" / "noun" (suite + mock convention)
+                p_yes = float(result["noul"])
+                options: dict[str, float] = {"noui": p_yes, "noun": 1.0 - p_yes}
+            elif qtype == "score":
+                # probabilities are keyed by level index, legend maps to labels
+                legend = result.get("legend") or []
+                options = {
+                    (legend[int(k)] if int(k) < len(legend) else k): float(v)
+                    for k, v in result.get("probabilities", {}).items()
+                }
+            else:  # choice: probabilities keyed by option label
+                options = {
+                    label: float(p)
+                    for label, p in result.get("probabilities", {}).items()
+                }
             for label, p in options.items():
                 if not (math.isfinite(p) and 0.0 <= p <= 1.0):
                     raise ValueError(
                         f"question {name!r}: option {label!r} has invalid probability {p!r}"
                     )
-            argmax = max(options, key=options.get) if options else ""
+            argmax = result.get("choice") or (max(options, key=options.get) if options else "")
             out.per_question[name] = (argmax, options)
         return out
 

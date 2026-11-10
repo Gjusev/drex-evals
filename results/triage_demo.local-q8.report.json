@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "suite": "suites/triage_demo.json",
+    "suite_sha256": "c2e1b6c41efb5c0292b03bb3082560aa9033cc136719b08ce0b88878e5cc5bc6",
+    "backend_url": "http://127.0.0.1:8000",
+    "backend_kind": "local",
+    "model": "drex-v1.5 Q8_0 (llama.cpp, CPU)",
+    "generated": "2026-11-10T16:30:50+00:00",
+    "n_cases": 10,
+    "drexevals_version": "0.1.0"
+  },
+  "results": {
+    "team": {
+      "n": 10,
+      "accuracy": 0.6,
+      "avg_confidence": 0.8467600000000001,
+      "confidence_on_correct": 0.8439666666666668,
+      "confidence_on_wrong": 0.85095,
+      "calibration_bins": [
+        {
+          "confidence_range": "0.4-0.6",
+          "n": 1,
+          "observed_accuracy": 1.0
+        },
+        {
+          "confidence_range": "0.6-0.8",
+          "n": 2,
+          "observed_accuracy": 0.5
+        },
+        {
+          "confidence_range": "0.8-1.0",
+          "n": 7,
+          "observed_accuracy": 0.5714285714285714
+        }
+      ],
+      "brier": 0.6630651639999999,
+      "ece": 0.33148,
+      "ece_bins": [
+        {
+          "confidence_range": "0.5-0.6",
+          "n": 1,
+          "avg_confidence": 0.5764,
+          "observed_accuracy": 1.0
+        },
+        {
+          "confidence_range": "0.6-0.7",
+          "n": 2,
+          "avg_confidence": 0.6398,
+          "observed_accuracy": 0.5
+        },
+        {
+          "confidence_range": "0.8-0.9",
+          "n": 2,
+          "avg_confidence": 0.8312999999999999,
+          "observed_accuracy": 0.5
+        },
+        {
+          "confidence_range": "0.9-1.0",
+          "n": 5,
+          "avg_confidence": 0.9898,
+          "observed_accuracy": 0.6
+        }
+      ]
+    },
+    "refund": {
+      "n": 10,
+      "accuracy": 1.0,
+      "avg_confidence": 0.99489,
+      "confidence_on_correct": 0.99489,
+      "confidence_on_wrong": 0.0,
+      "calibration_bins": [
+        {
+          "confidence_range": "0.8-1.0",
+          "n": 10,
+          "observed_accuracy": 1.0
+        }
+      ],
+      "brier": 7.511399999999985e-05,
+      "ece": 0.005109999999999948,
+      "ece_bins": [
+        {
+          "confidence_range": "0.9-1.0",
+          "n": 10,
+          "avg_confidence": 0.99489,
+          "observed_accuracy": 1.0
+        }
+      ]
+    },
+    "urgency": {
+      "n": 10,
+      "accuracy": 0.6,
+      "avg_confidence": 0.7210500000000001,
+      "confidence_on_correct": 0.8408333333333333,
+      "confidence_on_wrong": 0.5413749999999999,
+      "calibration_bins": [
+        {
+          "confidence_range": "0.4-0.6",
+          "n": 5,
+          "observed_accuracy": 0.2
+        },
+        {
+          "confidence_range": "0.6-0.8",
+          "n": 1,
+          "observed_accuracy": 1.0
+        },
+        {
+          "confidence_range": "0.8-1.0",
+          "n": 4,
+          "observed_accuracy": 1.0
+        }
+      ],
+      "brier": 0.452767195,
+      "ece": 0.22464999999999996,
+      "ece_bins": [
+        {
+          "confidence_range": "0.5-0.6",
+          "n": 5,
+          "avg_confidence": 0.5457,
+          "observed_accuracy": 0.2
+        },
+        {
+          "confidence_range": "0.7-0.8",
+          "n": 1,
+          "avg_confidence": 0.7433,
+          "observed_accuracy": 1.0
+        },
+        {
+          "confidence_range": "0.9-1.0",
+          "n": 4,
+          "avg_confidence": 0.934675,
+          "observed_accuracy": 1.0
+        }
+      ]
+    }
+  }
+}

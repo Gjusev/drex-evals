@@ -32,33 +32,32 @@ Two different things, don't confuse them:
 
 ## Current task (do this now)
 
-ROADMAP.md item 2 tooling is DONE (Brier + 10-bin ECE in `runner.py`,
-printed by both scripts, offline tests updated, `results/README.md` template,
-self-describing report envelope with suite sha256 / backend kind / model /
-date). What remains is the real run:
+DONE (2026-11-10): calibration metrics + first real run. See README
+"First real run" and `results/triage_demo.local-q8.report.json`. Summary:
 
-- Point `DREX_BASE_URL` at a live endpoint (hosted needs `DREX_API_KEY`), run
-  `python3 scripts/preflight.py` — must print PASS.
-- Then: `python3 scripts/run_suite.py suites/triage_demo.json --model <weights>
-  --out results/triage_demo.<backend>.report.json` and commit the real report
-  (see results/README.md). Do NOT commit fabricated results.
+- Brier + 10-bin ECE per question in `runner.py`, printed by both scripts;
+  adversarially reviewed (label-union Brier, probability validation at the
+  client trust boundary, bin clamping). Offline tests: 7 passed.
+- Client now parses the documented `/v1/systemone` response contract
+  (choice / noul / score shapes from the models repo's request-format.md);
+  locked by a test against that documented example.
+- First real run: local drex-v1.5 Q8_0 on `triage_demo.json` (n=10).
+  refund 100% acc / Brier .000; team routing overconfident on
+  billing-vs-other boundary tickets (0.9–1.0 conf bin: 60% observed acc).
 
-2026-11-10 attempt log (agent session): `DREX_BASE_URL`/`DREX_API_KEY` were
-not set in the session or Windows user/machine env; hosted drex.nace.ai
-answered 401 (no key); no local serve.py on :8000/:8080; no sibling
-drex-decision-models repo — live run blocked, tooling committed instead.
+Reproducing the local endpoint (what actually worked on this machine — the
+Python `serve.py` needs a CUDA GPU, which this box lacks; llama.cpp CPU does
+not):
 
-2026-11-10 second session: re-verified — preflight against drex.nace.ai
-FAILs 401 (still no key anywhere), no local endpoint; live run still blocked.
-Committed: calibration tooling + tests + suite label fix (crash-ticket refund
-expected `noui` -> `noun`, matching the ticket text and the test fixture).
-No report committed — mock runs are plumbing checks, not measurements.
-
-Adversarial review of the metrics then confirmed and fixed: Brier now uses the
-label-union form (missing expected option costs (0-1)^2 — omitting the right
-answer can no longer score better than listing it), probability validation at
-the client trust boundary (rejects NaN/out-of-range, names the option), and
-bin-index clamping against negative confidences. Offline tests: 6 passed.
+```bash
+cd "/c/Code Main/drex-decision-models"   # sibling clone of nace-ai/drex-decision-models
+# weights: weights/drex-v1.5/drex-v1.5-Q8_0.gguf (prebuilt GGUF from
+# huggingface.co/nace-ai/drex-v1.5-Q8_0, ~9.5 GB — no conversion needed)
+./llama.cpp/build/bin/Release/llama-server.exe -m weights/drex-v1.5/drex-v1.5-Q8_0.gguf \
+    --embedding --pooling none -np 2 -c 32768 -b 16384 -ub 2048 --port 8000
+# then in drex-evals:
+DREX_BASE_URL=http://127.0.0.1:8000 python3 scripts/preflight.py   # must PASS
+```
 
 ## After that
 
