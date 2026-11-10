@@ -41,7 +41,7 @@ class DrexClient(BaseClient):
             method="POST",
         )
         payload = None
-        for attempt, backoff in enumerate((0, 2, 8), start=1):
+        for attempt, backoff in enumerate((0, 5, 20, 60), start=1):
             if backoff:
                 time.sleep(backoff)
             try:

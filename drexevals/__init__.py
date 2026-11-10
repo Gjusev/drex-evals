@@ -13,6 +13,7 @@ runs on Apple silicon, the 35B MoE needs ~24GB RAM or the Q4 GGUF).
 from .client import DrexClient, MockDrexClient
 from .types import DecisionRequest, Question, Answer
 from .runner import run_suite
+from .gate import calibrate_threshold, gate, risk_at
 
 __version__ = "0.1.0"
 __all__ = [
@@ -22,4 +23,7 @@ __all__ = [
     "Question",
     "Answer",
     "run_suite",
+    "gate",
+    "risk_at",
+    "calibrate_threshold",
 ]

@@ -1,0 +1,834 @@
+{
+  "suites/banking77_cluster_200.json:cluster": {
+    "drex hosted API (drex.nace.ai)": {
+      "n": 200,
+      "sweep": {
+        "0.50": {
+          "risk": 0.12105263157894737,
+          "coverage": 0.95
+        },
+        "0.60": {
+          "risk": 0.1016949152542373,
+          "coverage": 0.885
+        },
+        "0.70": {
+          "risk": 0.07407407407407407,
+          "coverage": 0.81
+        },
+        "0.80": {
+          "risk": 0.041666666666666664,
+          "coverage": 0.72
+        },
+        "0.90": {
+          "risk": 0.032,
+          "coverage": 0.625
+        },
+        "0.95": {
+          "risk": 0.032,
+          "coverage": 0.625
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 0.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 0.8345507248783421,
+          "coverage": 0.72,
+          "risk": 0.041666666666666664
+        },
+        "2%": {
+          "tau": 1.1,
+          "coverage": 0.0,
+          "risk": 0.0
+        }
+      }
+    }
+  },
+  "suites/laya_triage_200.json:cluster": {
+    "drex hosted API (drex.nace.ai)": {
+      "n": 200,
+      "sweep": {
+        "0.50": {
+          "risk": 0.030456852791878174,
+          "coverage": 0.985
+        },
+        "0.60": {
+          "risk": 0.031746031746031744,
+          "coverage": 0.945
+        },
+        "0.70": {
+          "risk": 0.03225806451612903,
+          "coverage": 0.93
+        },
+        "0.80": {
+          "risk": 0.02247191011235955,
+          "coverage": 0.89
+        },
+        "0.90": {
+          "risk": 0.024390243902439025,
+          "coverage": 0.82
+        },
+        "0.95": {
+          "risk": 0.024390243902439025,
+          "coverage": 0.82
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 0.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 0.38590555188119446,
+          "coverage": 1.0,
+          "risk": 0.035
+        },
+        "2%": {
+          "tau": 1.1,
+          "coverage": 0.0,
+          "risk": 0.0
+        }
+      }
+    },
+    "drex-v1.5 Q8_0 (llama.cpp, CPU)": {
+      "n": 200,
+      "sweep": {
+        "0.50": {
+          "risk": 0.05025125628140704,
+          "coverage": 0.995
+        },
+        "0.60": {
+          "risk": 0.035897435897435895,
+          "coverage": 0.975
+        },
+        "0.70": {
+          "risk": 0.036458333333333336,
+          "coverage": 0.96
+        },
+        "0.80": {
+          "risk": 0.032432432432432434,
+          "coverage": 0.925
+        },
+        "0.90": {
+          "risk": 0.027932960893854747,
+          "coverage": 0.895
+        },
+        "0.95": {
+          "risk": 0.027932960893854747,
+          "coverage": 0.895
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 0.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 0.3029,
+          "coverage": 1.0,
+          "risk": 0.05
+        },
+        "2%": {
+          "tau": 1.1,
+          "coverage": 0.0,
+          "risk": 0.0
+        }
+      }
+    }
+  },
+  "suites/laya_triage_200.json:urgency": {
+    "drex hosted API (drex.nace.ai)": {
+      "n": 200,
+      "sweep": {
+        "0.50": {
+          "risk": 0.13089005235602094,
+          "coverage": 0.955
+        },
+        "0.60": {
+          "risk": 0.08875739644970414,
+          "coverage": 0.845
+        },
+        "0.70": {
+          "risk": 0.06338028169014084,
+          "coverage": 0.71
+        },
+        "0.80": {
+          "risk": 0.03571428571428571,
+          "coverage": 0.56
+        },
+        "0.90": {
+          "risk": 0.02666666666666667,
+          "coverage": 0.375
+        },
+        "0.95": {
+          "risk": 0.02666666666666667,
+          "coverage": 0.375
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 0.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 0.850618569903495,
+          "coverage": 0.56,
+          "risk": 0.03571428571428571
+        },
+        "2%": {
+          "tau": 1.1,
+          "coverage": 0.0,
+          "risk": 0.0
+        }
+      }
+    },
+    "drex-v1.5 Q8_0 (llama.cpp, CPU)": {
+      "n": 200,
+      "sweep": {
+        "0.50": {
+          "risk": 0.24691358024691357,
+          "coverage": 0.81
+        },
+        "0.60": {
+          "risk": 0.15702479338842976,
+          "coverage": 0.605
+        },
+        "0.70": {
+          "risk": 0.1111111111111111,
+          "coverage": 0.45
+        },
+        "0.80": {
+          "risk": 0.08955223880597014,
+          "coverage": 0.335
+        },
+        "0.90": {
+          "risk": 0.0625,
+          "coverage": 0.24
+        },
+        "0.95": {
+          "risk": 0.0,
+          "coverage": 0.0
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 0.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 1.1,
+          "coverage": 0.0,
+          "risk": 0.0
+        },
+        "2%": {
+          "tau": 1.1,
+          "coverage": 0.0,
+          "risk": 0.0
+        }
+      }
+    }
+  },
+  "suites/laya_triage_200.json:frustration": {
+    "drex hosted API (drex.nace.ai)": {
+      "n": 200,
+      "sweep": {
+        "0.50": {
+          "risk": 0.18229166666666666,
+          "coverage": 0.96
+        },
+        "0.60": {
+          "risk": 0.14285714285714285,
+          "coverage": 0.805
+        },
+        "0.70": {
+          "risk": 0.10526315789473684,
+          "coverage": 0.665
+        },
+        "0.80": {
+          "risk": 0.057692307692307696,
+          "coverage": 0.52
+        },
+        "0.90": {
+          "risk": 0.0,
+          "coverage": 0.33
+        },
+        "0.95": {
+          "risk": 0.0,
+          "coverage": 0.33
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 0.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 0.9628942441745512,
+          "coverage": 0.33,
+          "risk": 0.0
+        },
+        "2%": {
+          "tau": 0.9628942441745512,
+          "coverage": 0.33,
+          "risk": 0.0
+        }
+      }
+    },
+    "drex-v1.5 Q8_0 (llama.cpp, CPU)": {
+      "n": 200,
+      "sweep": {
+        "0.50": {
+          "risk": 0.3072916666666667,
+          "coverage": 0.96
+        },
+        "0.60": {
+          "risk": 0.3023255813953488,
+          "coverage": 0.86
+        },
+        "0.70": {
+          "risk": 0.2589928057553957,
+          "coverage": 0.695
+        },
+        "0.80": {
+          "risk": 0.23478260869565218,
+          "coverage": 0.575
+        },
+        "0.90": {
+          "risk": 0.06756756756756757,
+          "coverage": 0.37
+        },
+        "0.95": {
+          "risk": 0.06756756756756757,
+          "coverage": 0.37
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 0.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 1.1,
+          "coverage": 0.0,
+          "risk": 0.0
+        },
+        "2%": {
+          "tau": 1.1,
+          "coverage": 0.0,
+          "risk": 0.0
+        }
+      }
+    }
+  },
+  "suites/laya_triage_de25.json:cluster": {
+    "drex hosted API (drex.nace.ai)": {
+      "n": 25,
+      "sweep": {
+        "0.50": {
+          "risk": 0.0,
+          "coverage": 1.0
+        },
+        "0.60": {
+          "risk": 0.0,
+          "coverage": 1.0
+        },
+        "0.70": {
+          "risk": 0.0,
+          "coverage": 1.0
+        },
+        "0.80": {
+          "risk": 0.0,
+          "coverage": 0.96
+        },
+        "0.90": {
+          "risk": 0.0,
+          "coverage": 0.8
+        },
+        "0.95": {
+          "risk": 0.0,
+          "coverage": 0.8
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 0.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 0.7802831379625408,
+          "coverage": 1.0,
+          "risk": 0.0
+        },
+        "2%": {
+          "tau": 0.7802831379625408,
+          "coverage": 1.0,
+          "risk": 0.0
+        }
+      }
+    }
+  },
+  "suites/laya_triage_de25.json:urgency": {
+    "drex hosted API (drex.nace.ai)": {
+      "n": 25,
+      "sweep": {
+        "0.50": {
+          "risk": 0.12,
+          "coverage": 1.0
+        },
+        "0.60": {
+          "risk": 0.05,
+          "coverage": 0.8
+        },
+        "0.70": {
+          "risk": 0.0,
+          "coverage": 0.6
+        },
+        "0.80": {
+          "risk": 0.0,
+          "coverage": 0.56
+        },
+        "0.90": {
+          "risk": 0.0,
+          "coverage": 0.36
+        },
+        "0.95": {
+          "risk": 0.0,
+          "coverage": 0.0
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 0.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 0.6488433593859277,
+          "coverage": 0.8,
+          "risk": 0.05
+        },
+        "2%": {
+          "tau": 0.7178533901628699,
+          "coverage": 0.6,
+          "risk": 0.0
+        }
+      }
+    }
+  },
+  "suites/laya_triage_de25.json:frustration": {
+    "drex hosted API (drex.nace.ai)": {
+      "n": 25,
+      "sweep": {
+        "0.50": {
+          "risk": 0.2608695652173913,
+          "coverage": 0.92
+        },
+        "0.60": {
+          "risk": 0.23529411764705882,
+          "coverage": 0.68
+        },
+        "0.70": {
+          "risk": 0.16666666666666666,
+          "coverage": 0.48
+        },
+        "0.80": {
+          "risk": 0.14285714285714285,
+          "coverage": 0.28
+        },
+        "0.90": {
+          "risk": 0.0,
+          "coverage": 0.2
+        },
+        "0.95": {
+          "risk": 0.0,
+          "coverage": 0.2
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 0.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 0.958450217762523,
+          "coverage": 0.2,
+          "risk": 0.0
+        },
+        "2%": {
+          "tau": 0.958450217762523,
+          "coverage": 0.2,
+          "risk": 0.0
+        }
+      }
+    }
+  },
+  "suites/phishield_test_183.json:phish": {
+    "drex hosted API (drex.nace.ai)": {
+      "n": 183,
+      "sweep": {
+        "0.50": {
+          "risk": 0.09289617486338798,
+          "coverage": 1.0
+        },
+        "0.60": {
+          "risk": 0.08045977011494253,
+          "coverage": 0.9508196721311475
+        },
+        "0.70": {
+          "risk": 0.0718562874251497,
+          "coverage": 0.912568306010929
+        },
+        "0.80": {
+          "risk": 0.05194805194805195,
+          "coverage": 0.8415300546448088
+        },
+        "0.90": {
+          "risk": 0.02158273381294964,
+          "coverage": 0.7595628415300546
+        },
+        "0.95": {
+          "risk": 0.02158273381294964,
+          "coverage": 0.7595628415300546
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 0.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 0.974364515725543,
+          "coverage": 0.7595628415300546,
+          "risk": 0.02158273381294964
+        },
+        "2%": {
+          "tau": 1.1,
+          "coverage": 0.0,
+          "risk": 0.0
+        }
+      }
+    },
+    "drex-v1.5 Q8_0 (llama.cpp, CPU)": {
+      "n": 183,
+      "sweep": {
+        "0.50": {
+          "risk": 0.1366120218579235,
+          "coverage": 1.0
+        },
+        "0.60": {
+          "risk": 0.13812154696132597,
+          "coverage": 0.9890710382513661
+        },
+        "0.70": {
+          "risk": 0.11242603550295859,
+          "coverage": 0.9234972677595629
+        },
+        "0.80": {
+          "risk": 0.0875,
+          "coverage": 0.8743169398907104
+        },
+        "0.90": {
+          "risk": 0.0625,
+          "coverage": 0.7868852459016393
+        },
+        "0.95": {
+          "risk": 0.0625,
+          "coverage": 0.7868852459016393
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 0.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 1.1,
+          "coverage": 0.0,
+          "risk": 0.0
+        },
+        "2%": {
+          "tau": 1.1,
+          "coverage": 0.0,
+          "risk": 0.0
+        }
+      }
+    }
+  },
+  "suites/triage_demo.json:team": {
+    "drex hosted API (drex.nace.ai)": {
+      "n": 10,
+      "sweep": {
+        "0.50": {
+          "risk": 0.2222222222222222,
+          "coverage": 0.9
+        },
+        "0.60": {
+          "risk": 0.0,
+          "coverage": 0.7
+        },
+        "0.70": {
+          "risk": 0.0,
+          "coverage": 0.7
+        },
+        "0.80": {
+          "risk": 0.0,
+          "coverage": 0.7
+        },
+        "0.90": {
+          "risk": 0.0,
+          "coverage": 0.6
+        },
+        "0.95": {
+          "risk": 0.0,
+          "coverage": 0.6
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 0.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 0.871555128912112,
+          "coverage": 0.7,
+          "risk": 0.0
+        },
+        "2%": {
+          "tau": 0.871555128912112,
+          "coverage": 0.7,
+          "risk": 0.0
+        }
+      }
+    },
+    "drex-v1.5 Q8_0 (llama.cpp, CPU)": {
+      "n": 10,
+      "sweep": {
+        "0.50": {
+          "risk": 0.4,
+          "coverage": 1.0
+        },
+        "0.60": {
+          "risk": 0.4444444444444444,
+          "coverage": 0.9
+        },
+        "0.70": {
+          "risk": 0.42857142857142855,
+          "coverage": 0.7
+        },
+        "0.80": {
+          "risk": 0.42857142857142855,
+          "coverage": 0.7
+        },
+        "0.90": {
+          "risk": 0.4,
+          "coverage": 0.5
+        },
+        "0.95": {
+          "risk": 0.4,
+          "coverage": 0.5
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 0.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 1.1,
+          "coverage": 0.0,
+          "risk": 0.0
+        },
+        "2%": {
+          "tau": 1.1,
+          "coverage": 0.0,
+          "risk": 0.0
+        }
+      }
+    }
+  },
+  "suites/triage_demo.json:refund": {
+    "drex hosted API (drex.nace.ai)": {
+      "n": 10,
+      "sweep": {
+        "0.50": {
+          "risk": 0.0,
+          "coverage": 1.0
+        },
+        "0.60": {
+          "risk": 0.0,
+          "coverage": 1.0
+        },
+        "0.70": {
+          "risk": 0.0,
+          "coverage": 1.0
+        },
+        "0.80": {
+          "risk": 0.0,
+          "coverage": 1.0
+        },
+        "0.90": {
+          "risk": 0.0,
+          "coverage": 1.0
+        },
+        "0.95": {
+          "risk": 0.0,
+          "coverage": 1.0
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 1.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 0.9935423276163314,
+          "coverage": 1.0,
+          "risk": 0.0
+        },
+        "2%": {
+          "tau": 0.9935423276163314,
+          "coverage": 1.0,
+          "risk": 0.0
+        }
+      }
+    },
+    "drex-v1.5 Q8_0 (llama.cpp, CPU)": {
+      "n": 10,
+      "sweep": {
+        "0.50": {
+          "risk": 0.0,
+          "coverage": 1.0
+        },
+        "0.60": {
+          "risk": 0.0,
+          "coverage": 1.0
+        },
+        "0.70": {
+          "risk": 0.0,
+          "coverage": 1.0
+        },
+        "0.80": {
+          "risk": 0.0,
+          "coverage": 1.0
+        },
+        "0.90": {
+          "risk": 0.0,
+          "coverage": 1.0
+        },
+        "0.95": {
+          "risk": 0.0,
+          "coverage": 1.0
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 1.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 0.99489,
+          "coverage": 1.0,
+          "risk": 0.0
+        },
+        "2%": {
+          "tau": 0.99489,
+          "coverage": 1.0,
+          "risk": 0.0
+        }
+      }
+    }
+  },
+  "suites/triage_demo.json:urgency": {
+    "drex hosted API (drex.nace.ai)": {
+      "n": 10,
+      "sweep": {
+        "0.50": {
+          "risk": 0.0,
+          "coverage": 0.8
+        },
+        "0.60": {
+          "risk": 0.0,
+          "coverage": 0.7
+        },
+        "0.70": {
+          "risk": 0.0,
+          "coverage": 0.6
+        },
+        "0.80": {
+          "risk": 0.0,
+          "coverage": 0.5
+        },
+        "0.90": {
+          "risk": 0.0,
+          "coverage": 0.5
+        },
+        "0.95": {
+          "risk": 0.0,
+          "coverage": 0.5
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 0.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 0.44073134989536145,
+          "coverage": 1.0,
+          "risk": 0.0
+        },
+        "2%": {
+          "tau": 0.44073134989536145,
+          "coverage": 1.0,
+          "risk": 0.0
+        }
+      }
+    },
+    "drex-v1.5 Q8_0 (llama.cpp, CPU)": {
+      "n": 10,
+      "sweep": {
+        "0.50": {
+          "risk": 0.4,
+          "coverage": 1.0
+        },
+        "0.60": {
+          "risk": 0.0,
+          "coverage": 0.5
+        },
+        "0.70": {
+          "risk": 0.0,
+          "coverage": 0.5
+        },
+        "0.80": {
+          "risk": 0.0,
+          "coverage": 0.4
+        },
+        "0.90": {
+          "risk": 0.0,
+          "coverage": 0.4
+        },
+        "0.95": {
+          "risk": 0.0,
+          "coverage": 0.0
+        },
+        "0.99": {
+          "risk": 0.0,
+          "coverage": 0.0
+        }
+      },
+      "calibrated": {
+        "5%": {
+          "tau": 0.7433,
+          "coverage": 0.5,
+          "risk": 0.0
+        },
+        "2%": {
+          "tau": 0.7433,
+          "coverage": 0.5,
+          "risk": 0.0
+        }
+      }
+    }
+  }
+}

@@ -31,3 +31,10 @@ File name: `<suite>.<backend>.report.json`.
 
 Mock runs (`backend_kind: "mock"`) are plumbing checks, not model measurements —
 don't commit them here.
+
+## escalation_policies.json — derived, not measured
+
+Written by `scripts/escalation_analysis.py` from the reports' `ece_bins`, not
+from per-case data: each bin is collapsed onto its `avg_confidence`, so a
+reported tau* is always a bin average — within a bin, all cases act or none
+do. Read coverage/risk at that granularity.

@@ -1,0 +1,1374 @@
+{
+  "name": "laya_triage_de25",
+  "description": "German-only banking-support triage (25 tickets), the lang=de subset of laya-triage data/hand_labeled_200.jsonl @ 4ff1f93. Same labels and question wording as laya_triage_200. n=25: directional only. German is the real workload; this suite isolates it from the multilingual mix.",
+  "questions_schema": [
+    {
+      "name": "cluster",
+      "type": "choice",
+      "instructions": "Which problem cluster does this ticket belong to?",
+      "criteria": {
+        "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+        "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+        "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+        "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+        "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+        "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+        "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+        "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+        "exchange_rates": "exchange rates, exchange charges, currency conversion",
+        "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+        "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+        "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+      }
+    },
+    {
+      "name": "urgency",
+      "type": "score",
+      "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+      "criteria": [
+        "none",
+        "some",
+        "high",
+        "drop-everything"
+      ]
+    },
+    {
+      "name": "frustration",
+      "type": "score",
+      "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+      "criteria": [
+        "calm",
+        "concerned",
+        "annoyed",
+        "angry"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "state": {
+        "ticket": "Meine neue Karte ist jetzt über drei Wochen unterwegs, die alte ist längst abgelaufen. Ich kann dadurch aktuell nirgendwo mit Karte zahlen, das nervt langsam."
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "card_ordering_and_delivery",
+        "urgency": "high",
+        "frustration": "concerned"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Guten Tag, meine Karte wurde laut App am Montag verschickt. Kann ich irgendwo nachsehen, mit welchem Dienst sie kommt und wann sie etwa ankommt?"
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "card_ordering_and_delivery",
+        "urgency": "none",
+        "frustration": "calm"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Der Automat hat meine PIN heute Morgen zweimal abgelehnt, jetzt ist die Karte ganz gesperrt. Ich brauche morgen aber Bargeld für die Werkstattrechnung."
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "card_and_pin_malfunctions",
+        "urgency": "high",
+        "frustration": "calm"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Das kontaktlose Zahlen funktioniert bei meiner Karte seit gestern nicht mehr, ich muss überall die PIN eingeben. Lässt sich das neu einstellen oder ist die Karte defekt?"
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "card_and_pin_malfunctions",
+        "urgency": "some",
+        "frustration": "calm"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Der Geldautomat an der Post hat gerade meine Karte eingezogen und nicht wieder herausgegeben. Übermorgen fliege ich in den Urlaub und stehe dann da ohne Karte. Langsam reicht's."
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "card_and_pin_malfunctions",
+        "urgency": "high",
+        "frustration": "annoyed"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Mir wurde gerade eben an der Tankstelle zweimal 89,50 € abgebucht, obwohl ich nur einmal getankt habe. Das kann doch nicht wahr sein, das Geld ist jetzt doppelt weg."
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "card_payment_problems",
+        "urgency": "drop-everything",
+        "frustration": "annoyed"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Meine Karte wurde gestern im Supermarkt abgelehnt, obwohl genug Guthaben drauf war. Mit der Karte meiner Partnerin hat es dann geklappt, aber die Situation war mir trotzdem unangenehm."
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "card_payment_problems",
+        "urgency": "some",
+        "frustration": "concerned"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Auf meinem Konto sehe ich eine Kartenzahlung über 14,99 € an einen Anbieter namens Digital-Serv, den ich nicht einordnen kann. Kommt mir spanisch vor, kann das jemand prüfen?"
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "card_payment_problems",
+        "urgency": "some",
+        "frustration": "concerned"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Ich habe gestern im Restaurant mit der Karte bezahlt, die Buchung steht immer noch auf ausstehend. Wann wird die denn endlich abgerechnet?"
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "card_payment_problems",
+        "urgency": "some",
+        "frustration": "concerned"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Der Automat an der Ecke hat mir statt 200 € nur 100 € ausgezahlt, abgebucht wurden aber die vollen 200 €. Ich habe den Vorgang direkt vor Ort gemeldet und brauche eine Bestätigung für die Prüfung."
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "cash_and_atm",
+        "urgency": "high",
+        "frustration": "calm"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Der Automat in der Innenstadt hat meine Abhebung gestern Abend abgelehnt, obwohl genug Guthaben drauf war. Am nächsten Automaten hat es dann funktioniert."
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "cash_and_atm",
+        "urgency": "some",
+        "frustration": "calm"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Ich habe vor einer Stunde aus Versehen 320 € an einen alten Kontakt statt an meinen Vermieter überwiesen. Wie bekomme ich die Überweisung noch gestoppt, bevor sie durchgeht? Ich bin gerade ziemlich in Panik."
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "transfers_and_beneficiaries",
+        "urgency": "drop-everything",
+        "frustration": "concerned"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Ich habe gestern meinem Bruder 150 € überwiesen, bei ihm ist bis jetzt nichts angekommen. Er hat schon zweimal nachgefragt, ob alles korrekt war."
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "transfers_and_beneficiaries",
+        "urgency": "high",
+        "frustration": "calm"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Wie lange dauert eine Überweisung von meinem Konto zu einer Sparkasse im Schnitt? Ich frage nur zur Planung einer größeren Zahlung."
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "transfers_and_beneficiaries",
+        "urgency": "none",
+        "frustration": "calm"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Wenn ich meine Vermieterin als Empfängerin anlegen will, bringt die App ständig die Meldung, der Empfänger sei nicht zulässig. Ich muss deshalb jedes Mal den Umweg über mein anderes Konto nehmen."
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "transfers_and_beneficiaries",
+        "urgency": "some",
+        "frustration": "annoyed"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Meine Aufladung von 100 € ist heute Morgen fehlgeschlagen, vom Referenzkonto wurde das Geld trotzdem abgebucht. Das ist jetzt die zweite fehlgeschlagene Aufladung in dieser Woche."
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "top_ups_and_balance_updates",
+        "urgency": "high",
+        "frustration": "annoyed"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Ich habe vorhin 50 € per Karte aufgeladen, in der App ist bislang nichts angekommen. Normalerweise klappt das doch innerhalb weniger Minuten."
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "top_ups_and_balance_updates",
+        "urgency": "high",
+        "frustration": "concerned"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Gibt es ein monatliches Limit, wie viel ich per Karte aufladen kann? Ich überlege, mein Gehalt dauerhaft auf dieses Konto leiten zu lassen."
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "top_ups_and_balance_updates",
+        "urgency": "none",
+        "frustration": "calm"
+      }
+    },
+    {
+      "state": {
+        "ticket": "In meiner Monatsabrechnung taucht eine Position Servicepauschale 4,90 € auf, die ich so noch nie gesehen habe. Wofür wird die berechnet?"
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "fees_charges_and_refunds",
+        "urgency": "none",
+        "frustration": "calm"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Für meine Bargeldabhebung in Prag wurden mir 5 € Auslandsgebühr abgezogen, darauf hat mich der Automat nicht hingewiesen. Bekomme ich die Gebühr erstattet?"
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "fees_charges_and_refunds",
+        "urgency": "none",
+        "frustration": "concerned"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Der Händler hat mir gestern eine Erstattung von 30 € bestätigt, auf meinem Konto ist bis jetzt nichts angekommen. Kann jemand nachsehen, wo die bleibt?"
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "fees_charges_and_refunds",
+        "urgency": "high",
+        "frustration": "concerned"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Bei meiner Zahlung in Tokio wurde ein Kurs umgerechnet, der deutlich schlechter ist als alles, was ich nachgeschlagen habe. Fühlt sich an wie Abzocke mit verstecktem Zuschlag. Ich möchte wissen, wie ihr auf diesen Kurs kommt."
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "exchange_rates",
+        "urgency": "none",
+        "frustration": "annoyed"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Ich habe meinen Zugangscode vergessen und komme nicht mehr in die App. Der Reset-Link per E-Mail kommt auch nach mehrmaligem Anfordern nicht an."
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "identity_and_account_admin",
+        "urgency": "high",
+        "frustration": "annoyed"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Meine Identitätsprüfung wurde zum dritten Mal abgelehnt, obwohl der Ausweis scharf und vollständig fotografiert ist. Solange die Prüfung offen ist, kann ich keine Überweisungen tätigen. Wenn das nicht endlich bearbeitet wird, schalte ich die Finanzaufsicht ein."
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "identity_and_account_admin",
+        "urgency": "high",
+        "frustration": "angry"
+      }
+    },
+    {
+      "state": {
+        "ticket": "Auf meinem Konto sind heute Nacht drei Zahlungen bei einem Shop in Brasilien abgebucht worden, ich war dort noch nie. Das ist wirklich zum Kotzen. Sperrt bitte sofort meine Karte und holt mir das Geld zurück!"
+      },
+      "questions": [
+        {
+          "name": "cluster",
+          "type": "choice",
+          "instructions": "Which problem cluster does this ticket belong to?",
+          "criteria": {
+            "card_ordering_and_delivery": "ordering, activating or waiting for a new or replacement card",
+            "card_types_and_linking": "card types (virtual, disposable), limits, wallet linking (Apple Pay, Google Pay), supported networks",
+            "card_and_pin_malfunctions": "card or contactless not working, card swallowed by ATM, PIN blocked or change",
+            "card_payment_problems": "card payment declined, pending, charged twice, reverted or not recognised",
+            "cash_and_atm": "ATM or cash withdrawal: cannot withdraw, declined, pending, wrong amount received",
+            "transfers_and_beneficiaries": "transfers failed, pending, cancelled or not received; beneficiary problems",
+            "top_ups_and_balance_updates": "top-ups: failed, pending, not showing yet, limits; balance not updated after adding money",
+            "fees_charges_and_refunds": "unexpected fees or charges, refund requested or missing",
+            "exchange_rates": "exchange rates, exchange charges, currency conversion",
+            "identity_and_account_admin": "identity verification (KYC), source of funds, passcode forgotten, edit personal details, account closure",
+            "lost_stolen_compromised": "card or phone lost or stolen, account or card compromised",
+            "eligibility_and_coverage": "eligibility to open an account: age limit, supported countries and currencies"
+          }
+        },
+        {
+          "name": "urgency",
+          "type": "score",
+          "instructions": "How urgently does this ticket need a response? Levels, lowest first: none = no time element at all (general questions, curiosity, 'sometime'); some = mild time preference ('soon') or a live inconvenience worked around without loss; high = explicit deadline, money stuck or blocked now, a core action impossible today, or 'as soon as possible' said plainly; drop-everything = active loss in progress (fraud, double charge happening, card compromised), security exposure, or explicit now-markers. Urgency is not anger: a perfectly calm ticket can be drop-everything.",
+          "criteria": [
+            "none",
+            "some",
+            "high",
+            "drop-everything"
+          ]
+        },
+        {
+          "name": "frustration",
+          "type": "score",
+          "instructions": "How frustrated is the customer's tone? Levels, lowest first: calm = polite, factual or positive; concerned = worried or mildly negative wording, still civil; annoyed = clear complaints ('ridiculous', 'again', 'third time'), sarcasm, pointed criticism; angry = strong language, profanity, shouting, threats to leave, legal or regulator threats. Judge the words on the page, not the situation's objective severity.",
+          "criteria": [
+            "calm",
+            "concerned",
+            "annoyed",
+            "angry"
+          ]
+        }
+      ],
+      "expected": {
+        "cluster": "lost_stolen_compromised",
+        "urgency": "drop-everything",
+        "frustration": "angry"
+      }
+    }
+  ]
+}

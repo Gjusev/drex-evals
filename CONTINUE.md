@@ -32,21 +32,21 @@ Two different things, don't confuse them:
 
 ## Current task (do this now)
 
-DONE (2026-11-10): calibration metrics, first real run, real-suite imports,
-and the hosted-vs-Q8 cross-backend table — all three suites on both
-backends, reports in results/, findings + exact commands in README.
-Offline tests: 7 passed. Headlines: calibration holds at n=200 on routing;
-hosted beats Q8 by 5-20 accuracy points but Q8 calibration degrades
-gracefully (confidence drops where accuracy drops).
+DONE (2026-11-10, evening): the full phase — calibration metrics, first
+real run, real suites, cross-backend table, German suite, BANKING77 sample
+(human labels), and the act/ask gate: `drexevals/gate.py` (empirical risk
+thresholds) + `scripts/escalation_analysis.py` (per-suite τ* at 5%/2% risk,
+results/escalation_policies.json). Offline tests: 10 passed. All reports
+committed with hash-verified suites; findings + commands in README.
 
-Next per ROADMAP: dedicated German suite (laya_triage_200 has only 25 de
-tickets inside the multilingual mix), BANKING77 stratified sample, gate
-integration. gate-calibrated import is blocked on missing conversation
-state (labels exist; see ROADMAP Done note).
+Next per ROADMAP: live gate integration into an agent tool-approval loop
+(needs gate-calibrated decision data — blocked on conversation state), and
+scale-up (full BANKING77 ~$0.12, per-language breakdowns, Q4 when feasible).
 
 Hosted runs need DREX_API_KEY (console at drex.nace.ai; ~$0.04/1M input
 tokens — a full suite pass costs fractions of a cent). The client retries
-429/5xx with backoff. Rotate any key that has been pasted into chats.
+429/5xx with a 0/5/20/60s ladder. Rotate any key pasted into chats (the one
+used on 2026-11-10 should be rotated).
 
 ## Reproducing the local endpoint (this machine)
 

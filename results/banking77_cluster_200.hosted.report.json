@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "suite": "suites/banking77_cluster_200.json",
+    "suite_sha256": "969fe77072f89fe34f67f320e63b6aee0552cda296be1b7578ac259cd9f1893f",
+    "backend_url": "https://drex.nace.ai",
+    "backend_kind": "hosted",
+    "model": "drex hosted API (drex.nace.ai)",
+    "generated": "2026-11-10T20:46:58+00:00",
+    "n_cases": 200,
+    "drexevals_version": "0.1.0"
+  },
+  "results": {
+    "cluster": {
+      "n": 200,
+      "accuracy": 0.845,
+      "avg_confidence": 0.8541640050173782,
+      "confidence_on_correct": 0.8954980324687181,
+      "confidence_on_wrong": 0.6288268876213645,
+      "calibration_bins": [
+        {
+          "confidence_range": "0.2-0.4",
+          "n": 3,
+          "observed_accuracy": 0.0
+        },
+        {
+          "confidence_range": "0.4-0.6",
+          "n": 20,
+          "observed_accuracy": 0.5
+        },
+        {
+          "confidence_range": "0.6-0.8",
+          "n": 33,
+          "observed_accuracy": 0.6363636363636364
+        },
+        {
+          "confidence_range": "0.8-1.0",
+          "n": 144,
+          "observed_accuracy": 0.9583333333333334
+        }
+      ],
+      "brier": 0.20693212232649924,
+      "ece": 0.03034271981158765,
+      "ece_bins": [
+        {
+          "confidence_range": "0.2-0.3",
+          "n": 2,
+          "avg_confidence": 0.21570117020051896,
+          "observed_accuracy": 0.0
+        },
+        {
+          "confidence_range": "0.3-0.4",
+          "n": 1,
+          "avg_confidence": 0.3649277080405512,
+          "observed_accuracy": 0.0
+        },
+        {
+          "confidence_range": "0.4-0.5",
+          "n": 7,
+          "avg_confidence": 0.442877298742728,
+          "observed_accuracy": 0.2857142857142857
+        },
+        {
+          "confidence_range": "0.5-0.6",
+          "n": 13,
+          "avg_confidence": 0.5537176650308975,
+          "observed_accuracy": 0.6153846153846154
+        },
+        {
+          "confidence_range": "0.6-0.7",
+          "n": 15,
+          "avg_confidence": 0.6343862806903363,
+          "observed_accuracy": 0.6
+        },
+        {
+          "confidence_range": "0.7-0.8",
+          "n": 18,
+          "avg_confidence": 0.7521337296056054,
+          "observed_accuracy": 0.6666666666666666
+        },
+        {
+          "confidence_range": "0.8-0.9",
+          "n": 19,
+          "avg_confidence": 0.8345507248783421,
+          "observed_accuracy": 0.8947368421052632
+        },
+        {
+          "confidence_range": "0.9-1.0",
+          "n": 125,
+          "avg_confidence": 0.9666186808199114,
+          "observed_accuracy": 0.968
+        }
+      ]
+    }
+  }
+}

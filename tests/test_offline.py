@@ -141,3 +141,32 @@ def test_client_rejects_invalid_probability(monkeypatch):
     _fake_response(monkeypatch, {"answers": {"refund": {"type": "noul", "noul": "NaN"}}})
     with pytest.raises(ValueError, match="refund"):
         DrexClient(base_url="http://x").decide(DecisionRequest(state={}, questions=[]))
+
+
+def test_gate_decision_rule():
+    from drexevals import gate
+
+    assert gate(0.97, tau=0.9) == "act"
+    assert gate(0.5, tau=0.9) == "ask"
+
+
+def test_risk_at():
+    from drexevals import risk_at
+
+    pairs = [(0.9, True), (0.8, True), (0.6, False)]
+    assert risk_at(pairs, 0.0) == (1 / 3, 1.0)  # act on all: one wrong
+    assert risk_at(pairs, 0.7) == (0.0, 2 / 3)  # the wrong one is below tau
+    assert risk_at(pairs, 0.95) == (0.0, 0.0)  # nothing acts
+
+
+def test_calibrate_threshold():
+    from drexevals import calibrate_threshold
+
+    pairs = [(0.9, True), (0.8, True), (0.6, False)]
+    tau, cov, risk = calibrate_threshold(pairs, max_risk=0.5)
+    assert (tau, cov, risk) == (0.6, 1.0, pytest.approx(1 / 3))
+    tau, cov, risk = calibrate_threshold(pairs, max_risk=0.2)  # must skip the wrong one
+    assert (tau, cov, risk) == (0.8, 2 / 3, 0.0)
+    # a wrong answer at max confidence leaves no acting threshold
+    pairs = [(0.99, False), (0.9, True)]
+    assert calibrate_threshold(pairs, max_risk=0.0) == (1.1, 0.0, 0.0)

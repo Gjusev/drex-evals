@@ -38,20 +38,26 @@ real runs on bigger suites and more backends.
   5-20 accuracy points but calibration degrades gracefully — confidence
   drops where accuracy drops. Hosted client got 429/5xx retry with backoff.
   Total hosted spend for all suites: <$0.01
-- dedicated German suite and gate integration remain (see Next)
+- dedicated German suite + BANKING77 sample + escalation analysis done
+  (2026-11-10, hosted): laya_triage_de25 (cluster 100%, Brier .011),
+  banking77_cluster_200 (human labels, cluster 84%/ECE .030), and
+  drexevals/gate.py + escalation_analysis.py — act/ask thresholds per
+  suite/backend at 5%/2% empirical risk budgets (see README table)
 
 ## Next (in order)
 
-### 1. Deeper German coverage + escalation policy cases
-laya_triage_200 carries 25 German tickets inside the multilingual suite; a
-dedicated German suite (the real workload) and act-or-escalate cases given
-confidence are still open. Consider a BANKING77 stratified sample (13k
-human-labeled English tickets in laya-triage/data/external, intent-only).
+### 1. Live gate integration
+`drexevals/gate.py` + `escalation_analysis.py` deliver the act/ask rule and
+calibrated thresholds from measured data. Remaining: wire it into a real
+agent tool-approval loop (methodology: gate-calibrated repo, conformal risk
+control with held-out calibration). Its tau-bench decision labels exist but
+carry no conversation state (see Done note) — new collection or cache
+reconstruction unblocks calibrating the gate on agent actions themselves.
 
-### 3. Gate integration
-Wire the scored confidences into an act/ask gate with conformal risk control
-(methodology already exists in `gate-calibrated`) — Drex as the System 1
-brain of a tool-approval layer for agents.
+### 2. Scale-up
+BANKING77 full test split (3,080 human-labeled cases, ~$0.12 hosted) for
+tighter ECE; per-language breakdowns (laya_200 covers en/es/fr/de/hi/ar);
+a local Q4 build when a prebuilt GGUF appears or RAM allows conversion.
 
 ## Non-goals
 

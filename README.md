@@ -98,6 +98,39 @@ Hosted runs: `DREX_BASE_URL=https://drex.nace.ai python3 scripts/run_suite.py
 (reports committed; total spend for all three hosted runs: well under $0.01
 at ~$0.04/1M input tokens).
 
+### German suite, BANKING77, and escalation thresholds (2026-11-10, hosted)
+
+Two more suites (same backend, exact commands in the report `meta`):
+
+- **`laya_triage_de25`** — the German subset of laya_triage_200, identical
+  question wording (n=25, directional): **cluster 100%** / Brier .011
+  (conf-on-wrong 0.00 — no wrong routing at all), urgency 88% / ECE .101,
+  frustration 68% / ECE .119. German routing is production-grade on the
+  hosted model.
+- **`banking77_cluster_200`** — 200 tickets stratified by cluster from the
+  canonical PolyAI BANKING77 test split (**human labels**, mapped to the 12
+  clusters via laya-triage's committed schema): **cluster 84%** / ECE .030,
+  conf-on-wrong 0.63. The strongest-label suite in this repo.
+
+**Escalation policy** (`scripts/escalation_analysis.py` over the committed
+reports; `drexevals/gate.py` is the runtime rule — empirical risk control at
+bin granularity, no distribution-free guarantee):
+
+| suite:question | backend | τ* (risk ≤5%) | coverage |
+|---|---|---|---|
+| banking77:cluster | hosted | 0.83 | 72% |
+| laya_de25:cluster | hosted | 0.78 | 100% |
+| laya_de25:urgency | hosted | 0.72 | 60% (risk ≤2%) |
+| laya_200:cluster | hosted | 0.39 | 100% |
+| phishield:phish | hosted | 0.97 | 76% |
+| phishield:phish | local Q8 | — | 0% (no τ holds) |
+
+Read: on German routing and laya clustering the model can auto-act nearly
+everywhere at a 5% risk budget; phishing needs τ≈0.97 and still escalates a
+quarter; the Q8 build's confidence cannot buy a 5% budget on phishing at
+all — escalate everything or use the hosted model. Full sweep:
+`results/escalation_policies.json`.
+
 ## Usage
 
 ```python
