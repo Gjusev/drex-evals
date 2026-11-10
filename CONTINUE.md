@@ -20,6 +20,16 @@ probabilities out — scored for accuracy AND confidence calibration
 - Suites are labeled data: keep `expected` values justified by the case text;
   no label without a reason a reviewer can check.
 
+## Models — Z.ai Coding Plan (mandatory for the dev agent, NOT for Drex runs)
+
+Two different things, don't confuse them:
+
+1. **The coding agent developing this repo** (Claude Code / etc.) runs on the
+   Z.ai Coding Plan — flat subscription, no per-call billing.
+2. **The Drex endpoint being evaluated** stays whatever MAIN-PC.md says
+   (local serve.py or hosted drex.nace.ai). Drex is NOT served by Z.ai —
+   never point DREX_BASE_URL at Z.ai.
+
 ## Current task (do this now)
 
 ROADMAP.md item 2 — calibration as the headline:
