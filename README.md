@@ -37,6 +37,39 @@ miss is a billing-vs-other boundary ticket answered at 0.81–1.00 confidence �
 in the 0.9–1.0 confidence bin, observed accuracy was 0.6 (n=5). n=10, so read
 the ECE values as coarse. Full report: `results/triage_demo.local-q8.report.json`.
 
+### Real suites (2026-11-10, same backend)
+
+Imported from the sibling repos (label provenance stated in each suite file):
+
+```bash
+DREX_BASE_URL=http://127.0.0.1:8000 python3 scripts/run_suite.py suites/laya_triage_200.json \
+    --model "drex-v1.5 Q8_0 (llama.cpp, CPU)" --out results/laya_triage_200.local-q8.report.json
+DREX_BASE_URL=http://127.0.0.1:8000 python3 scripts/run_suite.py suites/phishield_test_183.json \
+    --model "drex-v1.5 Q8_0 (llama.cpp, CPU)" --out results/phishield_test_183.local-q8.report.json
+```
+
+| suite (n) | question | accuracy | avg conf | Brier | ECE |
+|---|---|---|---|---|---|
+| laya_triage_200 (200, en/es/fr/de/hi/ar) | cluster (12-way) | 95% | 0.96 | 0.087 | 0.032 |
+| | urgency (4-level) | 70% | 0.69 | 0.377 | 0.058 |
+| | frustration (4-level) | 69% | 0.80 | 0.447 | 0.141 |
+| phishield_test_183 (183, en) | phish (noul) | 86% | 0.94 | 0.208 | 0.084 |
+
+What the numbers say:
+
+- **Calibration holds at n=200 on 12-way routing**: in the 0.9–1.0 confidence
+  bin (74 cases) the model said 95.5% on average and was right 93.2% of the
+  time. The triage_demo team-routing overconfidence did not generalize — it
+  was an artifact of 5 ambiguous billing-vs-other tickets.
+- **Ordinal tone/urgency scores are the weak spot**: frustration runs
+  conf 0.80 against 69% accuracy (ECE 0.141) — subjective tone reading, and
+  the labels themselves are AI-annotated with kappa ~0.79 on that dimension.
+- **Phishing at max confidence**: 144/183 emails answered at ~0.99 confidence
+  were 94% correct — strong but not the 99% the confidence claims; mid-range
+  answers (conf 0.6–0.8) were worse than a coin flip (observed 0.44–0.5).
+  For an act/ask gate, the ~6% miss rate at max confidence is the number
+  that bounds auto-act.
+
 ## Usage
 
 ```python

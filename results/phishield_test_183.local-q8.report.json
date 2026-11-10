@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "suite": "suites/phishield_test_183.json",
+    "suite_sha256": "27116273958efddb9fd410254141caec777dfa29815f09bb0ffed737800d2c50",
+    "backend_url": "http://127.0.0.1:8000",
+    "backend_kind": "local",
+    "model": "drex-v1.5 Q8_0 (llama.cpp, CPU)",
+    "generated": "2026-11-10T20:17:10+00:00",
+    "n_cases": 183,
+    "drexevals_version": "0.1.0"
+  },
+  "results": {
+    "phish": {
+      "n": 183,
+      "accuracy": 0.8633879781420765,
+      "avg_confidence": 0.9373677595628404,
+      "confidence_on_correct": 0.9554911392405057,
+      "confidence_on_wrong": 0.8228280000000001,
+      "calibration_bins": [
+        {
+          "confidence_range": "0.4-0.6",
+          "n": 2,
+          "observed_accuracy": 1.0
+        },
+        {
+          "confidence_range": "0.6-0.8",
+          "n": 21,
+          "observed_accuracy": 0.47619047619047616
+        },
+        {
+          "confidence_range": "0.8-1.0",
+          "n": 160,
+          "observed_accuracy": 0.9125
+        }
+      ],
+      "brier": 0.2081062328961748,
+      "ece": 0.08369672131147549,
+      "ece_bins": [
+        {
+          "confidence_range": "0.5-0.6",
+          "n": 2,
+          "avg_confidence": 0.55545,
+          "observed_accuracy": 1.0
+        },
+        {
+          "confidence_range": "0.6-0.7",
+          "n": 12,
+          "avg_confidence": 0.6459583333333333,
+          "observed_accuracy": 0.5
+        },
+        {
+          "confidence_range": "0.7-0.8",
+          "n": 9,
+          "avg_confidence": 0.7429111111111111,
+          "observed_accuracy": 0.4444444444444444
+        },
+        {
+          "confidence_range": "0.8-0.9",
+          "n": 16,
+          "avg_confidence": 0.86909375,
+          "observed_accuracy": 0.6875
+        },
+        {
+          "confidence_range": "0.9-1.0",
+          "n": 144,
+          "avg_confidence": 0.9866958333333334,
+          "observed_accuracy": 0.9375
+        }
+      ]
+    }
+  }
+}

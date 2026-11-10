@@ -32,31 +32,35 @@ Two different things, don't confuse them:
 
 ## Current task (do this now)
 
-DONE (2026-11-10): calibration metrics + first real run. See README
-"First real run" and `results/triage_demo.local-q8.report.json`. Summary:
+DONE (2026-11-10): calibration metrics, first real run, and the real-suite
+imports — `laya_triage_200` (multilingual, 25 German tickets) and
+`phishield_test_183` built and measured on local drex-v1.5 Q8_0. All
+reports committed under results/, numbers + exact commands in README.
+Offline tests: 7 passed. Headline findings: calibration holds at n=200 on
+12-way routing (says 95%, right 93%); overconfident on ordinal tone scores
+(frustration) and at phishing max confidence (6% miss at 0.99).
 
-- Brier + 10-bin ECE per question in `runner.py`, printed by both scripts;
-  adversarially reviewed (label-union Brier, probability validation at the
-  client trust boundary, bin clamping). Offline tests: 7 passed.
-- Client now parses the documented `/v1/systemone` response contract
-  (choice / noul / score shapes from the models repo's request-format.md);
-  locked by a test against that documented example.
-- First real run: local drex-v1.5 Q8_0 on `triage_demo.json` (n=10).
-  refund 100% acc / Brier .000; team routing overconfident on
-  billing-vs-other boundary tickets (0.9–1.0 conf bin: 60% observed acc).
+Next per ROADMAP: more backends (hosted needs DREX_API_KEY; no prebuilt Q4
+for v1.5 — conversion needs 18GB bf16), deeper German coverage, gate
+integration. gate-calibrated import is blocked on missing conversation
+state (labels exist; see ROADMAP Done note).
 
-Reproducing the local endpoint (what actually worked on this machine — the
-Python `serve.py` needs a CUDA GPU, which this box lacks; llama.cpp CPU does
-not):
+## Reproducing the local endpoint (this machine)
+
+The Python `serve.py` needs a CUDA GPU, which this box lacks; llama.cpp CPU
+does not. ~10 GB RAM for the server — close Firefox/WSL first, or the OS
+memory-pressure reaper in Claude Code will kill it mid-run (happened 3x).
 
 ```bash
 cd "/c/Code Main/drex-decision-models"   # sibling clone of nace-ai/drex-decision-models
 # weights: weights/drex-v1.5/drex-v1.5-Q8_0.gguf (prebuilt GGUF from
 # huggingface.co/nace-ai/drex-v1.5-Q8_0, ~9.5 GB — no conversion needed)
 ./llama.cpp/build/bin/Release/llama-server.exe -m weights/drex-v1.5/drex-v1.5-Q8_0.gguf \
-    --embedding --pooling none -np 2 -c 32768 -b 16384 -ub 2048 --port 8000
+    --embedding --pooling none -np 1 -c 4096 -b 4096 -ub 2048 --port 8000
 # then in drex-evals:
 DREX_BASE_URL=http://127.0.0.1:8000 python3 scripts/preflight.py   # must PASS
+DREX_BASE_URL=http://127.0.0.1:8000 python3 scripts/run_suite.py suites/laya_triage_200.json \
+    --model "drex-v1.5 Q8_0 (llama.cpp, CPU)" --out results/laya_triage_200.local-q8.report.json
 ```
 
 ## After that

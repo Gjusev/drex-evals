@@ -23,34 +23,32 @@ real runs on bigger suites and more backends.
   accuracy 0.6, n=5). Report: `results/triage_demo.local-q8.report.json`
 - client now parses the documented `/v1/systemone` response contract
   (choice/noul/score), locked by an offline test against the docs example
+- real suites imported and run (items 2+3): `laya_triage_200` (200
+  multilingual tickets incl. 25 German — cluster 95%/ECE .032, urgency 70%,
+  frustration 69%/ECE .141) and `phishield_test_183` (86% acc, ECE .084;
+  0.99-conf answers 94% correct). Importers committed; reports in results/.
+  Calibration claim tested: holds at n=200 on routing, overconfident on
+  ordinal tone scores and at phishing max confidence (6% miss at 0.99)
+- gate-calibrated import investigated and deferred: 1535 labeled tau-bench
+  steps exist (correct vs gold) but rows carry no conversation state — a
+  suite would be stateless. Unblock via re-collection or reconstruction
+  from its .cache/llm (run_id-keyed)
 
 ## Next (in order)
 
-### 1. More real runs: bigger n + more backends
-The demo suite is n=10 — too small for stable ECE. Import real suites (item
-below) and rerun; then the hosted endpoint and/or another quantization on the
-same suite for the cross-backend table.
-
-### 2. Calibration is the headline, not accuracy
-Tooling done; first data point in the README. The claim that matters for
-gates: "when it says 90%, is it right 90% of the time?" — on this run, team
-routing said ~99% and was right 60% of the time (n=5). If quantized local
-weights lose calibration vs hosted, that's a publishable finding by itself.
-
-### 3. Real suites
-- Import labeled cases from the sibling repos: `gate-calibrated` (tau-bench
-  retail act/ask decisions), `laya-phishield` (phishing), `laya-triage`
-  (multilingual support tickets)
-- German-language suite (the triage demo is English-only; German tickets are
-  the real workload)
-- Escalation policy cases: given confidence, act or send to human?
-
-### 4. Cross-model comparison table
-Same suite, three backends: hosted API, local drex-v1.5 Q8, local Q4 GGUF.
+### 1. More backends: cross-quantization / hosted table
+Same suites, second backend: hosted API (needs DREX_API_KEY) and/or a Q4
+build (no prebuilt GGUF for v1.5 — conversion needs the 18GB bf16 weights).
 One table: accuracy / ECE / latency per backend. Answers "can I self-host
 without losing calibration?"
 
-### 5. Gate integration
+### 2. Deeper German coverage + escalation policy cases
+laya_triage_200 carries 25 German tickets inside the multilingual suite; a
+dedicated German suite (the real workload) and act-or-escalate cases given
+confidence are still open. Consider a BANKING77 stratified sample (13k
+human-labeled English tickets in laya-triage/data/external, intent-only).
+
+### 3. Gate integration
 Wire the scored confidences into an act/ask gate with conformal risk control
 (methodology already exists in `gate-calibrated`) — Drex as the System 1
 brain of a tool-approval layer for agents.
