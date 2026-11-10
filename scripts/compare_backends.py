@@ -3,8 +3,8 @@
 
 Answers the roadmap question: "can I self-host without losing calibration?"
 Runs the same suite against N backends (hosted, local Q8, local Q4...), prints
-accuracy / avg confidence / confidence-on-wrong per question per backend, and
-writes a combined JSON for the README table.
+accuracy / avg confidence / Brier / ECE / confidence-on-wrong per question per
+backend, and writes a combined JSON for the README table.
 
 Usage:
   python3 scripts/compare_backends.py suites/triage_demo.json \
@@ -57,6 +57,7 @@ def main():
         for qname, s in report.items():
             print(f"  {qname:10} acc={s['accuracy']:.0%}  "
                   f"conf={s['avg_confidence']:.2f}  "
+                  f"brier={s['brier']:.3f}  ece={s['ece']:.3f}  "
                   f"conf_on_wrong={s['confidence_on_wrong']:.2f}")
         combined["backends"][name] = report
         print()

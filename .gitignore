@@ -1,2 +1,5 @@
 __pycache__/
 .pytest_cache/
+# scratch outputs next to the suite; committed reports live in results/
+suites/*.report.json
+suites/*.comparison.json

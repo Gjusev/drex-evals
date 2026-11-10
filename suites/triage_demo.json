@@ -23,7 +23,7 @@
         {"name": "refund", "type": "noul", "instructions": "Does the customer explicitly ask for a refund?"},
         {"name": "urgency", "type": "score", "instructions": "How urgent is this ticket?", "criteria": ["Routine", "Soon", "Urgent"]}
       ],
-      "expected": {"team": "technical", "refund": "noui", "urgency": "Urgent"}
+      "expected": {"team": "technical", "refund": "noun", "urgency": "Urgent"}
     },
     {
       "state": {"ticket": "Just wanted to say the new dashboard looks great, thanks!"},

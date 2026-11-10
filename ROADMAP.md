@@ -11,6 +11,11 @@ first one. Item 1 below is where the owner continues (main PC).
 - `run_suite`: accuracy + confidence calibration (ECE-style bins) per question
 - `preflight.py` endpoint check, `triage_demo.json` (10 labeled cases)
 - offline mock client so the plumbing is testable without tokens/weights
+- calibration metrics: multi-class Brier + 10-bin ECE (with per-bin reliability
+  data) per question, in `run_suite`/`compare_backends` output; report envelope
+  with suite sha256 / backend kind / model / date; `results/` template for
+  committed real-run reports (item 2 tooling done — the measured claim test
+  still needs real runs)
 
 ## Next (in order)
 

@@ -9,9 +9,12 @@ act/ask gates) with runnable suites instead of vibes.
 
 ## Status
 
-Plumbing implemented and tested offline (mock client). Real runs: point
-`DREX_BASE_URL` at https://drex.nace.ai (with `DREX_API_KEY`) or a local
-`serve.py` from the models repo, then run the suites. Weights are open —
+Plumbing implemented and tested offline (mock client). Reports score accuracy
+**and** calibration per question: Brier score, 10-bin ECE with per-bin
+reliability data (`ece_bins`), plus avg confidence and confidence-on-wrong.
+Real runs: point `DREX_BASE_URL` at https://drex.nace.ai (with `DREX_API_KEY`)
+or a local `serve.py` from the models repo, then run the suites — committed
+reports live in `results/` (see `results/README.md`). Weights are open —
 drex-v1.5 (9B) runs on Apple silicon; the 35B MoE and Drex Max (27B
 multimodal) need more RAM.
 

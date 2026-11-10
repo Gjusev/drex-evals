@@ -32,18 +32,27 @@ Two different things, don't confuse them:
 
 ## Current task (do this now)
 
-ROADMAP.md item 2 — calibration as the headline:
+ROADMAP.md item 2 tooling is DONE (Brier + 10-bin ECE in `runner.py`,
+printed by both scripts, offline tests updated, `results/README.md` template,
+self-describing report envelope with suite sha256 / backend kind / model /
+date). What remains is the real run:
 
-1. Extend `drexevals/runner.py` with Brier score and ECE (10 bins) per
-   question, alongside the existing report fields.
-2. Extend `scripts/run_suite.py` and `scripts/compare_backends.py` to print
-   the new metrics; keep the JSON schema additive.
-3. Update the offline tests for the new fields (mock client still passes).
-4. Add `results/README.md` template describing what a committed report should
-   contain (suite hash, backend url kind, model, date) — do NOT commit
-   fabricated results; only real runs go there.
-5. If DREX_BASE_URL points at a live endpoint, run `triage_demo.json` and
-   commit the real report; otherwise stop after tooling + tests.
+- Point `DREX_BASE_URL` at a live endpoint (hosted needs `DREX_API_KEY`), run
+  `python3 scripts/preflight.py` — must print PASS.
+- Then: `python3 scripts/run_suite.py suites/triage_demo.json --model <weights>
+  --out results/triage_demo.<backend>.report.json` and commit the real report
+  (see results/README.md). Do NOT commit fabricated results.
+
+2026-11-10 attempt log (agent session): `DREX_BASE_URL`/`DREX_API_KEY` were
+not set in the session or Windows user/machine env; hosted drex.nace.ai
+answered 401 (no key); no local serve.py on :8000/:8080; no sibling
+drex-decision-models repo — live run blocked, tooling committed instead.
+
+2026-11-10 second session: re-verified — preflight against drex.nace.ai
+FAILs 401 (still no key anywhere), no local endpoint; live run still blocked.
+Committed: calibration tooling + tests + suite label fix (crash-ticket refund
+expected `noui` -> `noun`, matching the ticket text and the test fixture).
+No report committed — mock runs are plumbing checks, not measurements.
 
 ## After that
 
