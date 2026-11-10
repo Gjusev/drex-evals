@@ -33,16 +33,16 @@ real runs on bigger suites and more backends.
   steps exist (correct vs gold) but rows carry no conversation state — a
   suite would be stateless. Unblock via re-collection or reconstruction
   from its .cache/llm (run_id-keyed)
+- cross-backend table done (old items 1+4): all three suites on hosted
+  drex.nace.ai vs local Q8_0 (hash-verified same suites). Finding: Q8 costs
+  5-20 accuracy points but calibration degrades gracefully — confidence
+  drops where accuracy drops. Hosted client got 429/5xx retry with backoff.
+  Total hosted spend for all suites: <$0.01
+- dedicated German suite and gate integration remain (see Next)
 
 ## Next (in order)
 
-### 1. More backends: cross-quantization / hosted table
-Same suites, second backend: hosted API (needs DREX_API_KEY) and/or a Q4
-build (no prebuilt GGUF for v1.5 — conversion needs the 18GB bf16 weights).
-One table: accuracy / ECE / latency per backend. Answers "can I self-host
-without losing calibration?"
-
-### 2. Deeper German coverage + escalation policy cases
+### 1. Deeper German coverage + escalation policy cases
 laya_triage_200 carries 25 German tickets inside the multilingual suite; a
 dedicated German suite (the real workload) and act-or-escalate cases given
 confidence are still open. Consider a BANKING77 stratified sample (13k

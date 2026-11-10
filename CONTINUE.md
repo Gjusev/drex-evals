@@ -32,18 +32,21 @@ Two different things, don't confuse them:
 
 ## Current task (do this now)
 
-DONE (2026-11-10): calibration metrics, first real run, and the real-suite
-imports — `laya_triage_200` (multilingual, 25 German tickets) and
-`phishield_test_183` built and measured on local drex-v1.5 Q8_0. All
-reports committed under results/, numbers + exact commands in README.
-Offline tests: 7 passed. Headline findings: calibration holds at n=200 on
-12-way routing (says 95%, right 93%); overconfident on ordinal tone scores
-(frustration) and at phishing max confidence (6% miss at 0.99).
+DONE (2026-11-10): calibration metrics, first real run, real-suite imports,
+and the hosted-vs-Q8 cross-backend table — all three suites on both
+backends, reports in results/, findings + exact commands in README.
+Offline tests: 7 passed. Headlines: calibration holds at n=200 on routing;
+hosted beats Q8 by 5-20 accuracy points but Q8 calibration degrades
+gracefully (confidence drops where accuracy drops).
 
-Next per ROADMAP: more backends (hosted needs DREX_API_KEY; no prebuilt Q4
-for v1.5 — conversion needs 18GB bf16), deeper German coverage, gate
+Next per ROADMAP: dedicated German suite (laya_triage_200 has only 25 de
+tickets inside the multilingual mix), BANKING77 stratified sample, gate
 integration. gate-calibrated import is blocked on missing conversation
 state (labels exist; see ROADMAP Done note).
+
+Hosted runs need DREX_API_KEY (console at drex.nace.ai; ~$0.04/1M input
+tokens — a full suite pass costs fractions of a cent). The client retries
+429/5xx with backoff. Rotate any key that has been pasted into chats.
 
 ## Reproducing the local endpoint (this machine)
 

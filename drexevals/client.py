@@ -27,6 +27,8 @@ class DrexClient(BaseClient):
 
     def decide(self, request: DecisionRequest) -> Answer:
         import json
+        import time
+        import urllib.error
         import urllib.request
 
         req = urllib.request.Request(
@@ -38,8 +40,24 @@ class DrexClient(BaseClient):
             },
             method="POST",
         )
-        with urllib.request.urlopen(req, timeout=120) as resp:
-            payload = json.loads(resp.read())
+        payload = None
+        for attempt, backoff in enumerate((0, 2, 8), start=1):
+            if backoff:
+                time.sleep(backoff)
+            try:
+                with urllib.request.urlopen(req, timeout=120) as resp:
+                    payload = json.loads(resp.read())
+                break
+            except urllib.error.HTTPError as exc:
+                # transient on the hosted API under sequential load: retry,
+                # otherwise surface the status
+                if exc.code in (408, 425, 429) or 500 <= exc.code < 600:
+                    if attempt == 3:
+                        raise
+                    continue
+                raise
+        if payload is None:  # pragma: no cover - defensive
+            raise RuntimeError(f"{self.base_url}/v1/systemone: no response after retries")
 
         out = Answer()
         for name, result in payload.get("answers", {}).items():

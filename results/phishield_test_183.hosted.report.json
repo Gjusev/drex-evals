@@ -1,0 +1,72 @@
+{
+  "meta": {
+    "suite": "suites/phishield_test_183.json",
+    "suite_sha256": "27116273958efddb9fd410254141caec777dfa29815f09bb0ffed737800d2c50",
+    "backend_url": "https://drex.nace.ai",
+    "backend_kind": "hosted",
+    "model": "drex hosted API (drex.nace.ai)",
+    "generated": "2026-11-10T20:35:02+00:00",
+    "n_cases": 183,
+    "drexevals_version": "0.1.0"
+  },
+  "results": {
+    "phish": {
+      "n": 183,
+      "accuracy": 0.907103825136612,
+      "avg_confidence": 0.9148383655846904,
+      "confidence_on_correct": 0.9296724539821444,
+      "confidence_on_wrong": 0.7699878553507287,
+      "calibration_bins": [
+        {
+          "confidence_range": "0.4-0.6",
+          "n": 9,
+          "observed_accuracy": 0.6666666666666666
+        },
+        {
+          "confidence_range": "0.6-0.8",
+          "n": 20,
+          "observed_accuracy": 0.7
+        },
+        {
+          "confidence_range": "0.8-1.0",
+          "n": 154,
+          "observed_accuracy": 0.948051948051948
+        }
+      ],
+      "brier": 0.1447266549605913,
+      "ece": 0.031621144941736,
+      "ece_bins": [
+        {
+          "confidence_range": "0.5-0.6",
+          "n": 9,
+          "avg_confidence": 0.556213605811273,
+          "observed_accuracy": 0.6666666666666666
+        },
+        {
+          "confidence_range": "0.6-0.7",
+          "n": 7,
+          "avg_confidence": 0.6245407929540623,
+          "observed_accuracy": 0.7142857142857143
+        },
+        {
+          "confidence_range": "0.7-0.8",
+          "n": 13,
+          "avg_confidence": 0.7509327660058199,
+          "observed_accuracy": 0.6923076923076923
+        },
+        {
+          "confidence_range": "0.8-0.9",
+          "n": 15,
+          "avg_confidence": 0.8559279503394925,
+          "observed_accuracy": 0.6666666666666666
+        },
+        {
+          "confidence_range": "0.9-1.0",
+          "n": 139,
+          "avg_confidence": 0.974364515725543,
+          "observed_accuracy": 0.9784172661870504
+        }
+      ]
+    }
+  }
+}
