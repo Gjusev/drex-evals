@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import math
 import os
 from abc import ABC, abstractmethod
 
@@ -46,6 +47,11 @@ class DrexClient(BaseClient):
                 o["label"]: float(o["probability"])
                 for o in result.get("options", [])
             }
+            for label, p in options.items():
+                if not (math.isfinite(p) and 0.0 <= p <= 1.0):
+                    raise ValueError(
+                        f"question {name!r}: option {label!r} has invalid probability {p!r}"
+                    )
             argmax = max(options, key=options.get) if options else ""
             out.per_question[name] = (argmax, options)
         return out

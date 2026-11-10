@@ -53,9 +53,10 @@ def test_brier_score():
     # team, both cases: probs {chosen: .9, other: .05}, expected chosen
     # -> (.1)^2 + (.05)^2 = .0125 each
     assert report["team"]["brier"] == pytest.approx(0.0125)
-    # refund: case 1 (1-.9)^2 = .01; case 2 only option noui at .05, expected noun
-    # -> (.05)^2 = .0025; mean = .00625
-    assert report["refund"]["brier"] == pytest.approx(0.00625)
+    # refund: case 1 (1-.9)^2 = .01; case 2 only option noui at .05, expected
+    # noun -> (.05)^2 + (0-1)^2 [expected absent from options] = 1.0025;
+    # mean = (0.01 + 1.0025) / 2
+    assert report["refund"]["brier"] == pytest.approx(0.50625)
 
 
 def test_ece_ten_bins():
@@ -82,3 +83,30 @@ def test_mock_wrong_when_rules_miss():
     bad_rules = {"team": {"spam": "other"}}  # no keyword matches either ticket
     report = run_suite(MockDrexClient(bad_rules), CASES)
     assert report["team"]["accuracy"] < 1.0  # falls back to uniform -> miss at least once
+    # refund has no rules and no criteria -> empty probs: still counted, and the
+    # missing expected label costs the full (0-1)^2 brier penalty
+    assert report["refund"]["brier"] == pytest.approx(1.0)
+
+
+def test_client_rejects_invalid_probability(monkeypatch):
+    import json as _json
+    import urllib.request
+
+    from drexevals import DecisionRequest, DrexClient
+
+    class FakeResp:
+        def read(self):
+            return _json.dumps({"answers": {"q": {"options": [
+                {"label": "ok", "probability": 0.5},
+                {"label": "bad", "probability": "NaN"},
+            ]}}}).encode()
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc):
+            return False
+
+    monkeypatch.setattr(urllib.request, "urlopen", lambda req, timeout=120: FakeResp())
+    with pytest.raises(ValueError, match="bad"):
+        DrexClient(base_url="http://x").decide(DecisionRequest(state={}, questions=[]))

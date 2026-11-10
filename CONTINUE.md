@@ -54,6 +54,12 @@ Committed: calibration tooling + tests + suite label fix (crash-ticket refund
 expected `noui` -> `noun`, matching the ticket text and the test fixture).
 No report committed — mock runs are plumbing checks, not measurements.
 
+Adversarial review of the metrics then confirmed and fixed: Brier now uses the
+label-union form (missing expected option costs (0-1)^2 — omitting the right
+answer can no longer score better than listing it), probability validation at
+the client trust boundary (rejects NaN/out-of-range, names the option), and
+bin-index clamping against negative confidences. Offline tests: 6 passed.
+
 ## After that
 
 ROADMAP.md in order: real suites (import from gate-calibrated / laya-* /
